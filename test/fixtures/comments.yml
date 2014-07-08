@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cmonth: MyString
+  cyear: 1
+  cchapter: MyString
+  cmembernum: 1
+  cgograting: 1
+  creview: MyText
+  cquestions: MyText
+  crecommend: false
+
+two:
+  cmonth: MyString
+  cyear: 1
+  cchapter: MyString
+  cmembernum: 1
+  cgograting: 1
+  creview: MyText
+  cquestions: MyText
+  crecommend: false

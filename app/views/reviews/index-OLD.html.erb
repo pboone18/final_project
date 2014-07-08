@@ -1,0 +1,49 @@
+<h1>Welcome to the Book Club Chapter Questionnaire</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Booktitle</th>
+      <th>Author</th>
+      <th>Bookthumb</th>
+      <th>Url</th>
+      <th>Rating</th>
+      <th>Month</th>
+      <th>Year</th>
+      <th>Chapter</th>
+      <th>Membernum</th>
+      <th>Gograting</th>
+      <th>Review</th>
+      <th>Questions</th>
+      <th>Recommend</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.booktitle %></td>
+        <td><%= review.author %></td>
+        <td><%= review.bookthumb %></td>
+        <td><%= review.url %></td>
+        <td><%= review.rating %></td>
+        <td><%= review.month %></td>
+        <td><%= review.year %></td>
+        <td><%= review.chapter %></td>
+        <td><%= review.membernum %></td>
+        <td><%= review.gograting %></td>
+        <td><%= review.review %></td>
+        <td><%= review.questions %></td>
+        <td><%= review.recommend %></td>
+        <td><%= link_to 'Show', review %></td>
+        <td><%= link_to 'Edit', edit_review_path(review) %></td>
+        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Review', new_review_path %>
