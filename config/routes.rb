@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root 'welcome#index'
+  root 'reviews#index'
   resources :reviews
   # get 'welcome/index'
 
