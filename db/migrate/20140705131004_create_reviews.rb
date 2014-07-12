@@ -6,6 +6,7 @@ class CreateReviews < ActiveRecord::Migration
       t.string :bookthumb
       t.string :url
       t.integer :rating
+      # NOTE: The fields below have been removed via migration
       t.string :month
       t.integer :year
       t.string :chapter

@@ -1,0 +1,12 @@
+<h1>Comments#index</h1>
+<p>Find me in app/views/comments/index.html.erb</p>
+
+<h1>Welcome to the Book Club Chapter Questionnaire</h1>
+<p>Select a book from list below to write and submit your chapter's review.</p>
+
+<% if user_signed_in? %>
+  <h3><%= link_to "+ Create a New Book Review", new_comment_path %></h3>
+<% else %>
+  <h3><%= link_to "Sign in", new_user_session_path %></h3>
+<% end %>
+

@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'comments/index'
+
   devise_for :users
-  root 'reviews#index'
-  resources :reviews
+  root 'comments#index'
+  resources :comments
   # get 'welcome/index'
 
   # get 'reviews/index'

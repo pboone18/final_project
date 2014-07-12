@@ -1,10 +1,12 @@
 class ReviewsController < ApplicationController
+  # require 'pry-rails'
   require 'httparty'
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   # GET /reviews
   # GET /reviews.json
   def index
+    # binding.pry
     @reviews = Review.all
   end
 

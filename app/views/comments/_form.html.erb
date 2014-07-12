@@ -1,0 +1,52 @@
+<%= form_for(@comment) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<!--  -->
+
+<hr />
+
+  <div class="field">
+    <%= f.label :cmonth, "Month of Book Review" %><br>
+    <%= f.text_field :cmonth %>
+  </div>
+  <div class="field">
+    <%= f.label :cyear, "Year of Book Review" %><br>
+    <%= f.number_field :cyear, min: 2008, max: Date.today.year %>
+  </div>
+  <div class="field">
+    <%= f.label "Chapter" %><br>
+    <%= f.text_field :cchapter, :maxlength => 4 %>
+  </div>
+  <div class="field">
+    <%= f.label :cmembernum, "Number of Members Present" %><br>
+    <%= f.number_field :cmembernum, min: 1, max: 12 %>
+  </div>
+  <div class="field">
+    <%= f.label :cgograting, "Overall Chapter Rating (1 - 5)" %><br>
+    <%= f.number_field :cgograting, min: 1, max: 5 %>
+  </div>
+  <div class="field">
+    <%= f.label :creview, "Chapter Review"%><br>
+    <%= f.text_area :creview, size: "60x12" %>
+  </div>
+  <div class="field">
+    <%= f.label :cquestions, "Questions for Author" %><br>
+    <%= f.text_area :cquestions, size: "60x12" %>
+  </div>
+  <div class="field">
+    <%= f.label :crecommend, "Would you recommend this book to others? (Check box for Yes)" %><br>
+    <%= f.check_box :crecommend %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
