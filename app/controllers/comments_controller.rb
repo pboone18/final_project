@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 require 'httparty'
-before_action :set_review, only: [:show, :edit, :update, :destroy]
+before_action :load_comment, only: [:show, :edit, :update, :destroy]
 
   def index
   	#CHECK
@@ -34,9 +34,11 @@ before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   def show
   	#CHECK
-    movie = RottenMovie.find(title: @movie.title, limit: 1)
-    @rotten_score = movie.ratings.critics_score
-    @rotten_poster = movie.posters.original
+    # movie = RottenMovie.find(title: @movie.title, limit: 1)
+    # @rotten_score = movie.ratings.critics_score
+    # @rotten_poster = movie.posters.original
+    # @comment = Comment.find params[:id]
+    # @review = @comment.reviews
   end
 
   private
@@ -47,7 +49,7 @@ before_action :set_review, only: [:show, :edit, :update, :destroy]
 
     def safe_comment_params
     	#CHECK
-      params.require(:comment).permit(:title, :description, :year_released, :rating)
+      params.require(:comment).permit(:cmonth, :cyear, :cchapter, :cmembernum, :cgograting, :creview, :cquestions, :crecommend)
     end
 
 end

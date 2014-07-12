@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'comments#index'
   resources :comments
+  resources :reviews
   # get 'welcome/index'
 
   # get 'reviews/index'
