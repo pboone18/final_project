@@ -53,7 +53,4 @@ gem 'devise'
 #Adding CanCan for user profiles
 gem 'cancan'
 
-#Adding Goodreads Gem
-gem 'goodreads'
-
 gem 'pry-rails',        group: :development

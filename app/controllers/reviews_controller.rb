@@ -87,7 +87,7 @@ class ReviewsController < ApplicationController
       isbns = ["0307959929", "1400069947", "0399157727", "1594486344", "0820338885", "178087496"]
       url = "http://www.goodreads.com"
       method = "/book/isbn?isbn="
-      key = "qV5HzqB50GO5PqwPOXew"
+      apikey = "qV5HzqB50GO5PqwPOXew"
     end
 
 

@@ -1,15 +1,30 @@
 <!-- <p id="notice"><%= notice %></p> -->
+<h1>Comment Information:</h2>
+<%= form_for(@comment) do |f| %>
 
-<p>
-  <strong>Review Date</strong>
-  <%= @comment.cmonth %> <%= @comment.cyear %> 
-</p>
+  <p>
+      <strong>Chapter:</strong>
+      <%==@comment.cchapter %>
+  </p>
 
-<p>
-  <strong>Chapter:</strong>
-  <%= @comment.cchapter %>
-</p>
+    <p>
+      <strong>Review Date:</strong>
+      <%==@comment.cmonth %> <%==@comment.cyear %>
+  </p>
 
+  <p>
+      <strong>Review:</strong>
+      <%==@comment.creview %>
+  </p>
+
+  <p>
+      <strong>Questions for the Author:</strong>
+      <%==@comment.cquestions %>
+  </p>
+
+
+
+<% end %>
 
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
 <%= link_to 'Back', comments_path %>
