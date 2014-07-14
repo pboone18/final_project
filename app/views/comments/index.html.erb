@@ -4,27 +4,26 @@
 <h1>Welcome to the Book Club Chapter Questionnaire</h1>
 <p>Select a book from list below to write and submit your chapter's review.</p>
 
-<% if user_signed_in? %>
-  <h3><%= link_to "+ Create a New Book Review", new_comment_path %></h3>
-<!--   <h3><%#= link_to "My Review", user_path(current_user) %></h3> -->
-<% else %>
-  <h3><%= link_to "Sign in", new_user_session_path %></h3>
-<% end %>
+	<% if user_signed_in? %>
+	  <h3><%= link_to "+ Create a New Book Review", new_comment_path %></h3>
 
-
-<%  @books.each do |book| %>
-<div id="detailcontainer" style="padding: 20px;">
-	<div class="each" style="width:300px; border: 1px #000 solid; padding: 15px; height: 100px;">
-		<div style="float: left; width: 80px; margin: 0 0 30px 0;"><img src="<%= book[:image] %>"></div>
-		<div>
-	<%= link_to new_comment_path(book) do %>
-			<%= book[:title] %><br/>
-			<% end %>
-		<%= book[:author] %><br/>
-		<%= book[:rating] %><br/>
+		<%  @books.each do |book| %>
+		<div id="detailcontainer" style="padding: 20px;">
+			<div class="each" style="width:300px; border: 1px #000 solid; padding: 15px; height: 100px;">
+				<div style="float: left; width: 80px; margin: 0 0 30px 0;"><img src="<%= book[:bookthumb] %>"></div>
+				<div>
+			<%= link_to new_comment_path(book) do %>
+					<%= book[:booktitle] %><br/>
+					<% end %>
+				<%= book[:author] %><br/>
+				<%= book[:rating] %><br/>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
+		<% end %>
+	<% else %>
+	  <h3><%= link_to "Sign in", new_user_session_path %></h3>
+
 <% end  %>
 
 

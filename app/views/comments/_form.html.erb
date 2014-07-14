@@ -1,4 +1,4 @@
-
+<%#= @book[:booktitle] %>
 
 <%= form_for(@comment) do |f| %>
   <% if @comment.errors.any? %>
@@ -12,7 +12,14 @@
       </ul>
     </div>
   <% end %>
-<!--  -->
+
+<div class="field">
+  <%= f.label :booktitle, "Book of the Month" %><br>
+ <%= f.text_field :booktitle, :value=>params[:booktitle], size: "70x1" %>
+</div>
+<div class="field">
+  <%= f.text_field :author, readonly: true, :value=>params[:author], size: "70x1" %><br>
+</div>
 <hr />
 
   <div class="field">

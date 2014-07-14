@@ -2,6 +2,10 @@
 <h1>Comment Information:</h2>
 <%= form_for(@comment) do |f| %>
 
+<p><strong>Book Title:</strong>
+  <%==@book.booktitle %>
+  <%#==@book[0][:booktitle] %></p>
+
   <p>
       <strong>Chapter:</strong>
       <%==@comment.cchapter %>
@@ -9,7 +13,7 @@
 
     <p>
       <strong>Review Date:</strong>
-      <%==@comment.cmonth %> <%==@comment.cyear %>
+      <%==@comment.cmonth %>
   </p>
 
   <p>
