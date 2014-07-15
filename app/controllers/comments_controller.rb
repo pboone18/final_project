@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
 respond_to :json
+# before_action :load_review, only: [:show, :edit, :update, :destroy]
 before_action :load_comment, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -13,21 +14,31 @@ before_action :load_comment, only: [:show, :edit, :update, :destroy]
 
   def new
     @comment = Comment.new
-
-    @book = Review.new(
-      booktitle: params[:booktitle],
-      bookthumb: params[:bookthumb],
-      author: params[:author],
-      rating: params[:rating]
-    )
   end
 
   def create
+    @title = params["comment"]["booktitle"]
+    
     @comment = Comment.new safe_comment_params
-    # @book = Review.new safe_review_params
+    
+    comment_params = params[:comment]
+    
+    @books = Review.where(booktitle: @title)
 
-    if @comment.save 
-      # && @book.save
+    if @books.present?
+      @book = @books.first
+    else
+      @book = Review.create(
+        booktitle: comment_params[:booktitle],
+        bookthumb: comment_params[:bookthumb],
+        author: comment_params[:author],
+        rating: comment_params[:rating]
+      )  
+    end
+
+    if @comment.save
+      @comment.update_attributes!(review: @book)
+
       redirect_to @comment
     else
       render 'new'
@@ -38,7 +49,8 @@ before_action :load_comment, only: [:show, :edit, :update, :destroy]
   end
 
   def update
-    if @comment.update(safe_comment_params)
+    if @comment.update(safe_comment_params) 
+      # && @book.update(safe_review_params)
       redirect_to @comment
     else
       render 'edit'
@@ -46,19 +58,6 @@ before_action :load_comment, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-  	#CHECK
-    # movie = RottenMovie.find(title: @movie.title, limit: 1)
-    # @rotten_score = movie.ratings.critics_score
-    # @rotten_poster = movie.posters.original
-    # @comment = Comment.find params[:id]
-    # @review = @comment.reviews
-    #   @book = Review.new(
-    #   booktitle: params[:booktitle],
-    #   bookthumb: params[:bookthumb],
-    #   author: params[:author],
-    #   rating: params[:rating]
-    # )
-    book = Review.find(booktitle: @book.booktitle, limit: 1)
   end
 
   private
@@ -67,14 +66,9 @@ before_action :load_comment, only: [:show, :edit, :update, :destroy]
     @comment = Comment.find params[:id]
   end
 
-  def load_review
-    @book = Review.find params[:id]
-  end
-
-
   def safe_comment_params
   	#CHECK
-    params.require(:comment).permit(:cmonth, :cyear, :cchapter, :cmembernum, :cgograting, :creview, :cquestions, :crecommend)
+    params.require(:comment).permit(:cmonth, :cyear, :cchapter, :cmembernum, :cgograting, :creview, :cquestions, :crecommend, :review_id)
   end
 
   def safe_review_params

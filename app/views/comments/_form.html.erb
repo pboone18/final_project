@@ -14,11 +14,17 @@
   <% end %>
 
 <div class="field">
+  <% title = params[:booktitle] || @comment.review.try(:booktitle) %>
   <%= f.label :booktitle, "Book of the Month" %><br>
- <%= f.text_field :booktitle, :value=>params[:booktitle], size: "70x1" %>
+  <%= f.text_field :booktitle, :value => title, size: "70x1" %>
 </div>
+
 <div class="field">
-  <%= f.text_field :author, readonly: true, :value=>params[:author], size: "70x1" %><br>
+  <% author = params[:author] || @comment.review.try(:author) %>
+  <%= f.text_field :author, readonly: true, :value=> author, size: "70x1" %><br>
+</div> 
+<div class="field">
+  <% f.text_field :id, :value => params[:id] %>
 </div>
 <hr />
 

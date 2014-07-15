@@ -1,6 +1,8 @@
 class Review < ActiveRecord::Base
 	#BOOK INFO FROM GOODREADS GOES HERE
-	has_many :comments, foreign_key: :comment_id
+	has_many :comments
+
+  validates_uniqueness_of :booktitle
 
     def self.show_from_goodreads
 		@isbns = ["0307959929", "1400069947", "0399157727", "1594486344", "0820338885", "1780874960", "0778315339"]
