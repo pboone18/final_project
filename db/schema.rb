@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716142750) do
+ActiveRecord::Schema.define(version: 20140716165238) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20140716142750) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "review_id"
-    t.integer  "user_id"
   end
 
   create_table "reviews", force: true do |t|
