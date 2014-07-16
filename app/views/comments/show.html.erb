@@ -17,6 +17,11 @@
   </p>
 
   <p>
+      <strong>Chapter Overall Book Rating:</strong>
+      <%==@comment.cgograting %>
+  </p>
+
+  <p>
       <strong>Review:</strong>
       <%==@comment.creview %>
   </p>
@@ -26,9 +31,15 @@
       <%==@comment.cquestions %>
   </p>
 
+    <p>
+      <strong>Recommend this Book (Y/N):</strong>
+      <%==@comment.crecommend %>
+  </p>
+
 
 
 <% end %>
 
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%#= link_to 'Return To All Books List', comments_path %>
+<%= link_to 'Return To All Books List', controller: "comments" %>
