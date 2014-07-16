@@ -79,7 +79,7 @@ before_action :load_comment, only: [:show, :edit, :update, :destroy]
 
   def safe_comment_params
   	#CHECK
-    params.require(:comment).permit(:cmonth, :cyear, :cchapter, :cmembernum, :cgograting, :creview, :cquestions, :crecommend, :review_id, :user_id)
+    params.require(:comment).permit(:cmonth, :cyear, :cchapter, :cmembernum, :cgograting, :creview, :cquestions, :crecommend, :review_id)
   end
 
   def safe_review_params
