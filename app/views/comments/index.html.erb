@@ -1,14 +1,16 @@
 
-<h1>Welcome to the Book Club Chapter Questionnaire</h1>
-<p>Select a book from list below to write and submit your chapter's review.</p>
+ <h1>Book Club Chapter Questionnaire</h1>
+
+<p><i>Select a book from list below to write and submit your chapter's review.</i></p>
 
 	<% if user_signed_in? %>
+	<%#= link_to "My Reviews", user_path(current_user) %>
 	  <!-- <h3><%#= link_to "+ Create a New Book Review", new_comment_path %></h3> -->
 
 		<% @books.each do |book| %>
 		<div id="detailcontainer" style="padding: 20px;">
 			
-			<div class="each" style="width:500px; border: 1px #000 solid; padding: 15px; height: 100px;">
+			<div class="each" style="width:700px; border-bottom: 1px #000 solid; padding: 15px; height: 100px;">
 				<div style="float: left; width: 80px; margin: 0 0 30px 0;"><img src="<%= book[:bookthumb] %>"></div>
 				<div>
 					<%= link_to new_comment_path(book) do %>
@@ -18,8 +20,6 @@
 				Average Goodreads Member Rating: <%= book[:rating] %><br/>
 				</div>
 			</div>
-			
-
 		</div>
 		<% end %>
 	<% else %>

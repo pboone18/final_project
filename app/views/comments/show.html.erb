@@ -1,11 +1,11 @@
 <!-- <p id="notice"><%= notice %></p> -->
-<h1>Comment Information:</h2>
+<h1>Review Submitted For:</h2>
 <%= form_for(@comment) do |f| %>
 
-<p><strong>Book Title:</strong>
-  <%= @comment.review.booktitle %>
+<h2>
+  <i><%= @comment.review.booktitle %></i> by <%= @comment.review.author %></h2>
 
-
+<hr />
   <p>
       <strong>Chapter:</strong>
       <%==@comment.cchapter %>
@@ -13,7 +13,7 @@
 
     <p>
       <strong>Review Date:</strong>
-      <%==@comment.cmonth %>
+      <%==@comment.cmonth %> <%==@comment.cyear %>
   </p>
 
   <p>
@@ -45,6 +45,6 @@
 
 <% end %>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Edit Book Review', edit_comment_path(@comment) %> | <%= link_to 'Delete Book Review', @comment, method: :delete, data: { confirm: 'Are you sure?' } %> | 
 <%#= link_to 'Return To All Books List', comments_path %>
 <%= link_to 'Return To All Books List', controller: "comments" %>

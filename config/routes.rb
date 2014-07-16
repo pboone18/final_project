@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'comments#index'
   resources :comments
   resources :reviews
+  resources :users
   # get 'welcome/index'
 
   # get 'reviews/index'

@@ -6,10 +6,14 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body style="text-align: center; background: #4682B4;">
+  <div id="container" style="width:800px; margin: 20px auto; text-align:left; background: #FFF; padding: 20px;">
+
 	<% if user_signed_in? %>
       <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
     <% else %>
+     <h1>Welcome to the Book Club Chapter Questionnaire</h1>
+     <p style="font-size:smaller">This application allows national book club members to login every month and submit their book reviews to the book club administrator. They can also see how Goodreads.com members from around the world have rated the books their chapters are reading this year.</p>
       <%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %>
     <% end %>
     
@@ -17,5 +21,6 @@
        	<p class="alert"><%= alert %></p>
 <%= yield %>
 
+  </div>
 </body>
 </html>

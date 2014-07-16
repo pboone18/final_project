@@ -22,6 +22,8 @@ before_action :load_comment, only: [:show, :edit, :update, :destroy]
     
     comment_params = params[:comment]
     
+    # @comment.user = current_user
+
     @books = Review.where(booktitle: @title)
 
     if @books.present?
@@ -34,6 +36,8 @@ before_action :load_comment, only: [:show, :edit, :update, :destroy]
         rating: comment_params[:rating]
       )  
     end
+
+
 
     if @comment.save
       @comment.update_attributes!(review: @book)
@@ -59,6 +63,14 @@ before_action :load_comment, only: [:show, :edit, :update, :destroy]
   def show
   end
 
+   def destroy
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to comments_url, notice: 'Review was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
 
   def load_comment
@@ -67,7 +79,7 @@ before_action :load_comment, only: [:show, :edit, :update, :destroy]
 
   def safe_comment_params
   	#CHECK
-    params.require(:comment).permit(:cmonth, :cyear, :cchapter, :cmembernum, :cgograting, :creview, :cquestions, :crecommend, :review_id)
+    params.require(:comment).permit(:cmonth, :cyear, :cchapter, :cmembernum, :cgograting, :creview, :cquestions, :crecommend, :review_id, :user_id)
   end
 
   def safe_review_params
