@@ -32,8 +32,13 @@
   </p>
 
     <p>
-      <strong>Recommend this Book (Y/N):</strong>
-      <%==@comment.crecommend %>
+      <strong><i>
+      <% if @comment.crecommend == true %>
+      Yes, my chapter would recommend this book to others.
+      <% else %>
+      No, my chapter would not recommend this book to others.
+      <% end %></i></strong>
+      <%#==@comment.crecommend %>
   </p>
 
 

@@ -30,28 +30,30 @@
 
   <div class="field">
     <%= f.label :cmonth, "Month of Book Review" %><br>
-    <%= f.select(:cmonth, options_for_select([['January', 'January'], ['February', 'February'], ['March', 'March'], ['April', 'April'], ['May', 'May'], ['June', 'June'], ['July', 'July'], ['August', 'August'], ['September', 'September'], ['October', 'October'], ['November', 'November'], ['December', 'December']])) %>
+    <%= f.text_field :cmonth %>
+    <%#= f.select(:cmonth, options_for_select([['January', 'January'], ['February', 'February'], ['March', 'March'], ['April', 'April'], ['May', 'May'], ['June', 'June'], ['July', 'July'], ['August', 'August'], ['September', 'September'], ['October', 'October'], ['November', 'November'], ['December', 'December']])) %>
 
     <%#= f.select(:cmonth, options_for_select((1..12).map {|m| [Date::MONTHNAMES[m], m]})) %>
   </div>
   <div class="field">
     <%= f.label :cyear, "Year of Book Review" %><br>
-    <%= f.number_field(:cyear, in: 2008..Date.today.year, :value => Date.today.year) %>
+    <%= f.number_field(:cyear, in: 2008..Date.today.year) %>
     <%#= f.number_field :cyear, min: 2008, { :value => Date.today.year } %>
   </div>
   <div class="field">
     <%= f.label "Chapter" %><br>
-    <%#= f.text_field :cchapter, :maxlength => 4 %>
-    <%= f.select(:cchapter, options_for_select([['AL1', 'AL1'], ['AL2', 'AL2'], ['CA1', 'CA1'], ['CA2', 'CA2'], ['DC1', 'DC1'], ['DC2', 'DC2'], ['IL1', 'IL1'], ['IN1', 'IN1'], ['IN2', 'IN2'], ['IN3', 'IN3'], ['IN5', 'IN5'], ['MD2', 'MD2'], ['MD4', 'MD4'], ['MD5', 'MD5'], ['NC1', 'NC1'], ['NJ1', 'NJ1'], ['NJ2', 'NJ2'], ['NJ4', 'NJ4'], ['NJ5', 'NJ5'], ['NJ6', 'NJ6'], ['NJ8', 'NJ8'], ['NY1', 'NY1'], ['NY2', 'NY2'], ['NY3', 'NY3'], ['NY4', 'NY4'], ['NY7', 'NY7'], ['NY8', 'NY8'], ['NY9', 'NY9'], ['NY11', 'NY11'], ['NY12', 'NY12'], ['PA2', 'PA2'], ['SC1', 'SC1'], ['TX1', 'TX1'], ['VA4', 'VA4'], ['WA1', 'WA1']])) %>
+    <%= f.text_field :cchapter, :maxlength => 4, :allow_blank => false %>
+    <%#= f.select(:cchapter, options_for_select([['AL1', 'AL1'], ['AL2', 'AL2'], ['CA1', 'CA1'], ['CA2', 'CA2'], ['DC1', 'DC1'], ['DC2', 'DC2'], ['IL1', 'IL1'], ['IN1', 'IN1'], ['IN2', 'IN2'], ['IN3', 'IN3'], ['IN5', 'IN5'], ['MD2', 'MD2'], ['MD4', 'MD4'], ['MD5', 'MD5'], ['NC1', 'NC1'], ['NJ1', 'NJ1'], ['NJ2', 'NJ2'], ['NJ4', 'NJ4'], ['NJ5', 'NJ5'], ['NJ6', 'NJ6'], ['NJ8', 'NJ8'], ['NY1', 'NY1'], ['NY2', 'NY2'], ['NY3', 'NY3'], ['NY4', 'NY4'], ['NY7', 'NY7'], ['NY8', 'NY8'], ['NY9', 'NY9'], ['NY11', 'NY11'], ['NY12', 'NY12'], ['PA2', 'PA2'], ['SC1', 'SC1'], ['TX1', 'TX1'], ['VA4', 'VA4'], ['WA1', 'WA1']])) %>
   </div>
   <div class="field">
     <%= f.label :cmembernum, "Number of Members Present" %><br>
-    <%= f.select(:cmembernum, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10', 10], ['11', 11], ['12', 12]])) %>
+    <%= f.number_field :cmembernum, min: 1, max: 12 %>
+    <%#= f.select(:cmembernum, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10', 10], ['11', 11], ['12', 12]])) %>
   </div>
   <div class="field">
     <%= f.label :cgograting, "Overall Chapter Rating of Book" %><br>
-    <%#= f.number_field :cgograting, min: 1, max: 5 %>
-    <%= f.select(:cgograting, options_for_select([['Hated It', 1], ['Somewhat Liked It', 2], ['Liked It', 3],['Really Liked It', 4], ['Loved It', 5]]))  %>
+    <%= f.number_field :cgograting, min: 1, max: 5 %>
+    <%#= f.select(:cgograting, options_for_select([['Hated It', 1], ['Somewhat Liked It', 2], ['Liked It', 3],['Really Liked It', 4], ['Loved It', 5]]))  %>
   </div>
   <div class="field">
     <%= f.label :creview, "Chapter Review"%><br>
@@ -63,8 +65,8 @@
   </div>
   <div class="field">
     <%= f.label :crecommend, "Would you recommend this book to others? (Check box for Yes)" %><br>
-    <%#= f.check_box :crecommend %>
-    <%= f.radio_button(:crecommend, "Yes") %>
+    <%= f.check_box :crecommend %>
+    <%#= f.radio_button(:crecommend, "Yes") %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -4,8 +4,7 @@ respond_to :json
 # before_action :load_review, only: [:show, :edit, :update, :destroy]
 before_action :load_comment, only: [:show, :edit, :update, :destroy]
 
-  def index
-  	#CHECK
+  def index 
   	@comments = Comment.all
   	@reviews = Review.all
   	# get_from_goodreads
